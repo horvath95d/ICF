@@ -48,3 +48,10 @@ CREATE TABLE `login_attempts` (
   `time` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`)
 )
+
+CREATE TABLE `sessions` (
+  `id` varchar(32) NOT NULL,
+  `data` TEXT,
+  `modified_timestamp` int NOT NULL,
+  PRIMARY KEY (`id`)
+)

@@ -5,9 +5,12 @@ class home_model extends Model {
     public $message;
 
     public function login($identity, $password) {
-        $user = $this->getRecord("SELECT * FROM `users`
-            WHERE `username` = '".$identity."'");
-        
+        $query = ("SELECT * FROM `users` WHERE `username` = :username");
+        $params = [
+            ':username' => $identity
+        ];
+        $user = $this->getRecord($query, $params);
+
         if (!empty($user)) {
 
             if (password_verify($password, $user['password'])) {
